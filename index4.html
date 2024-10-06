@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function log(callback){
+            callback(prompt('enter your message here : '));
+            
+        }
+        log((str)=>{
+            let mesg = prompt('select your level , for info level message enter 0 and for erro level message enter 1: ');
+            if(mesg == 0){
+                let p = document.createElement('p');
+                p.innerHTML = str;
+                document.body.appendChild(p);
+                p.style.color = 'green';
+            }
+            else{
+                let p1 = document.createElement('p');
+                p1.innerHTML = str;
+                document.body.appendChild(p1);
+                p1.style.color = 'red';
+            }
+        })
+    </script>
+</body>
+</html>

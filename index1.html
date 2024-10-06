@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="body">
+    <button id="btn">
+        click here
+    </button>
+    <script>
+       function trigger(callback) {
+            callback();
+        }
+
+trigger(() => {
+    let btn = document.getElementById('btn');
+
+    btn.addEventListener('click', function () {
+        btn.remove();
+
+        let btn1 = document.createElement('button');
+        btn1.id = 'btn1';
+        btn1.innerText = "Click here to change background";
+        
+        let btn2 = document.createElement('button');
+        btn2.id = 'btn2';
+        btn2.innerText = 'Click here to print message';
+
+        document.body.appendChild(btn1);
+        document.body.appendChild(btn2);
+
+        // Event listener for btn1 (Change background)
+        btn1.addEventListener('click', function () {
+            btn1.style.display = 'none';
+            btn2.style.display = 'none';
+
+            document.body.style.backgroundColor = 'aqua';
+
+            let back = document.createElement('button');
+            back.innerText = 'Back';
+            document.body.appendChild(back);
+
+            back.addEventListener('click', function () {
+                back.remove();
+                btn1.style.display = 'inline-block';
+                btn2.style.display = 'inline-block';
+                document.body.style.backgroundColor = 'white';
+            });
+        });
+
+        // Event listener for btn2 (Print message)
+        btn2.addEventListener('click', function () {
+            btn1.style.display = 'none';
+            btn2.style.display = 'none';
+
+            let h1 = document.createElement('h1');
+            h1.innerText = 'Hello, how are you?';
+            document.body.appendChild(h1);
+
+            let back1 = document.createElement('button');
+            back1.innerText = 'Back';
+            document.body.appendChild(back1);
+
+            back1.addEventListener('click', function () {
+                h1.remove();
+                back1.remove();
+                btn1.style.display = 'inline-block';
+                btn2.style.display = 'inline-block';
+            });
+        });
+    });
+});
+
+    </script>
+</body>
+</html>

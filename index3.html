@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div{
+            height: 300px;
+            width: 300px;
+            border-radius: 50%;
+            border: 2px solid blue;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            animation: skew 3s ease-in-out 1s 1 ;
+            transition: all 2s;
+            background-color: aqua;
+        }
+        @keyframes skew {
+            0%{
+                transform: skewX(0deg);
+            }
+            25%{
+                transform: skewX(180deg);
+            }
+            50%{
+                transform: skewX(270deg);
+            }
+            75%{
+                transform: skewX(360deg);
+            }
+            100%{
+                transform: skewX(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">
+        click here
+    </button>
+    <script>
+        function animate(callback){
+            let btn = document.getElementById('btn');
+            btn.addEventListener('click',function (){
+                let div = document.createElement('div');
+                div.id = 'div';
+                document.body.appendChild(div);
+                callback();
+            })
+            
+        }
+        animate(()=>{
+            setTimeout(()=>{
+                console.log(`animation is completed`)
+                document.write('animation is completed');
+            },4000)
+           
+        })
+    </script>
+</body>
+</html>
